@@ -1,5 +1,26 @@
 #include "push_swap.h"
 
+
+int max_bits(t_stack *stack)
+{
+	int max = 0;
+	int bits = 0;
+	t_node *current = stack->top;
+
+	while (current)
+	{
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+
+	while ((max >> bits) != 0)
+		bits++;
+
+	return bits;
+}
+
+
 void	sa(t_stack *a)
 {
 		swap(a);

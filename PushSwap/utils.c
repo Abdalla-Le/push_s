@@ -1,4 +1,3 @@
-// funçoes basicas para criar as funções operacionais
 
 #include "push_swap.h"
 
@@ -20,6 +19,7 @@ t_node *new_node(int value)
 		return (NULL);
 	node->value = value;
 	node->next = NULL;
+	return (node);
 }
 
 // adicionando um novo nó no topo
@@ -52,7 +52,7 @@ int pop (t_stack *stack)
 void swap(t_stack *stack)
 {
 	if (!stack->top || !stack->top->next)
-		return (0);
+		return ;
 	t_node *first = stack->top;
 	t_node *second = first->next;
 
@@ -80,8 +80,21 @@ void rotate(t_stack *stack)
 
 void reverse_rotate(t_stack *stack)
 {
-	// se nao tiver pelo menos dois elementos?
 	if (!stack->top || !stack->top->next)
 		return;
-	t_node
+
+	t_node *prev = NULL;
+	t_node *first = stack->top;
+	t_node *last = stack->top;
+
+	// nesse while que eu acho a ultima
+	while (last->next != NULL)
+	{
+		prev = last;
+		last = last->next;
+	}
+
+	stack->top = last;
+	prev->next = NULL;
+	last->next = first;
 }
