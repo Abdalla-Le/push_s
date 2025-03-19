@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 // criando uma pilha vazia
@@ -38,7 +37,7 @@ void push(t_stack *stack, int value)
 int pop (t_stack *stack)
 {
 	if (!stack->top)
-		return (0);
+		return (-1);
 	t_node *temp = stack->top;
 	int value = temp->value;
 	stack->top = temp->next;
