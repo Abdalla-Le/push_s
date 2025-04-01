@@ -9,14 +9,29 @@ Adicionar os numeros na pilha a
 //vou receber numeros como
 // ./push_swap 1 2 3 4 ou ./push_swap "1 2 3 4"
 
-char **parse_args(int argc, char **argv)
+
+int is_duplicate(t_stack *a, int num)
 {
-	char **args;
+	t_node *current;
+
+	current = a->top;
+    while (current)
+    {
+        if (current->value == num)
+            return (1);
+        current = current->next;
+    }
+    return (0);
+}
+
+char **parse_args1(int argc, char **argv)
+{
 	int i;
+	char **args;
 
 	if (argc == 2)
 	{
-		args = split_args(argc, argv);
+		args = ft_split(argv[1], ' ');
 		if (!args)
 			return (0);
 	}
@@ -35,28 +50,41 @@ char **parse_args(int argc, char **argv)
 	}
 	return (args);
 }
-int parse_args2(char **args, t_stack *a)
+void	parse_args2(int argc, char **args, t_stack *a)
 {
 	int i;
 	int num;
 
 	i = 0;
-	while (args[i])
+	while (args[i]) // Conta até encontrar NULL
+        i++;
+	i--;
+	while (i >= 0)
 	{
-		if (!validate_number(args[i]))
-		{
-			free(args);
-			return (0);
-		}
 		num = ft_atoi(args[i]);
+		if (!ft_isdigit((num)))
+		{
+			error(args, argc, a);
+		}
+
 		if (is_duplicate(a, num))
 		{
-			free(args);
-			return (0);
+			error(args, argc, a);
 		}
-		push_to_stack(a, num);
-		i++;
+		push(a, num);
+		i--;
 	}
 	free(args);
-	return (1);
 }
+t_stack	*parse_args(int argc, char **argv)
+{
+	t_stack	*a;
+	char	**args;
+
+	a = stack_init();
+	args = parse_args1(argc, argv);
+	parse_args2(argc, args, a);
+	return (a);
+}
+
+

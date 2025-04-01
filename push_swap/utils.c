@@ -1,33 +1,20 @@
 #include "push_swap.h"
 
-int validate_number(char *str)
+void error(char **str, int argc, t_stack *a)
 {
-	int i = 0;
+	int	i;
 
-	if (str[i] == '\0')
-		return 0;
-
-
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i])
+	i = 0;
+	if (argc > 2)
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return 0;
+		while(str[i])
+			free(str[i]);
 		i++;
+		free(str); //ver se tem q fazer isso msm
 	}
-
-	return (1);
-}
-int is_duplicate(t_stack *stack, int num)
-{
-	t_stack *current = stack;
-
-	while (current != NULL)
-	{
-		if (current->value == num)
-			return 1;
-		current = current->next;
-	}
-	return 0;
+	else
+		free(str);
+	free(a);
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
 }

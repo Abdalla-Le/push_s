@@ -25,34 +25,38 @@ typedef struct s_stack
 void    push_swap(t_stack *a, t_stack *b);
 
 /* parser.c */
-int     parse_args(int argc, char **argv, t_stack *a);
-int     is_valid_number(char *str);
-int     has_duplicates(t_stack *a);
+char    **parse_args1(int argc, char **argv);
+void	parse_args2(int argc, char **args, t_stack *a);
+int is_duplicate(t_stack *a, int num);
+t_stack	*parse_args(int argc, char **argv);
 
 /* stack_utils.c */
-t_stack *init_stack(void);
+t_stack *stack_init(void);
 void    push(t_stack *stack, int value);
 int     pop(t_stack *stack);
 void    free_stack(t_stack *stack);
 void    print_stack(t_stack *stack); // (Debug)
 
 /* operations.c */
-void    sa(t_stack *a);
-void    sb(t_stack *b);
-void    ss(t_stack *a, t_stack *b);
-void    pa(t_stack *a, t_stack *b);
-void    pb(t_stack *a, t_stack *b);
-void    ra(t_stack *a);
-void    rb(t_stack *b);
-void    rr(t_stack *a, t_stack *b);
-void    rra(t_stack *a);
-void    rrb(t_stack *b);
-void    rrr(t_stack *a, t_stack *b);
+//void    sa(t_stack *a);
+//void    sb(t_stack *b);
+//void    ss(t_stack *a, t_stack *b);
+//void    pa(t_stack *a, t_stack *b);
+//void    pb(t_stack *a, t_stack *b);
+//void    ra(t_stack *a);
+//void    rb(t_stack *b);
+//void    rr(t_stack *a, t_stack *b);
+//void    rra(t_stack *a);
+//void    rrb(t_stack *b);
+//void    rrr(t_stack *a, t_stack *b);
 
 /* indexing.c */
 void    index_stack(t_stack *a);
 
 /* radix_sort.c */
 void    radix_sort(t_stack *a, t_stack *b);
+
+/*utils*/
+void    error(char **str, int argc, t_stack *a);
 
 #endif
