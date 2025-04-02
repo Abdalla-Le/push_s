@@ -6,45 +6,49 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 # Diretórios
-
-PRINTFDIR = Printf  # Diretório da printf
+PRINTFDIR = Printf
 LIBFTDIR = $(PRINTFDIR)/libft  # Libft está dentro da printf
 
 # Arquivos fontes do push_swap
-SRCS = push_swap.c parser.c stack_utils.c indexing.c
-OBJS = $(SRCS:%.c=%.o)
+SRCS = push_swap.c parser.c stack_utils.c indexing.c utils.c operations.c operations2.c radix_sort.c 
+OBJS = $(SRCS:.c=.o)
 
 # Arquivo da printf (que já inclui a libft)
 PRINTF = $(PRINTFDIR)/libftprintf.a
 
 # Flags de include e biblioteca
-INCLUDES = -I $(PRINTFDIR) -I $(LIBFTDIR)
-LIBS = -L $(PRINTFDIR) -lftprintf
+INCLUDES = -I$(PRINTFDIR) -I$(LIBFTDIR)  # <- Removido espaço depois do `-I`
+LIBS = -L$(PRINTFDIR) -lftprintf
 
-# Regras
+# Regra principal
 all: $(PRINTF) $(NAME)
+	@echo "✅ Build completa!"
 
 # Compilar a printf (que já compila a libft)
 $(PRINTF):
-	make -C $(PRINTFDIR)
+	@echo "🛠️  Compilando a printf..."
+	@make -C $(PRINTFDIR)
 
 # Compilar o push_swap
 $(NAME): $(OBJS) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+	@echo "🔧 Compilando $(NAME)..."
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
-# Criar pasta de objetos
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+# Regra para compilar os arquivos .c em .o
+%.o: %.c
+	@echo "🎯 Compilando $<..."
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # Limpar arquivos objetos e binários
 clean:
-	rm -rf $(OBJDIR)
-	make -C $(PRINTFDIR) clean
+	@echo "🧹 Limpando arquivos .o..."
+	@rm -f $(OBJS)
+	@make -C $(PRINTFDIR) clean
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(PRINTFDIR) fclean
+	@echo "🚮 Removendo $(NAME)..."
+	@rm -f $(NAME)
+	@make -C $(PRINTFDIR) fclean
 
 re: fclean all
 

@@ -22,16 +22,16 @@ void	ss(t_stack *a, t_stack *b)
 void	pa(t_stack **a, t_stack **b)
 {
 	int value;
-	value  = pop(b);
-	push(a, value);
+	value  = pop(*b);
+	push(*a, value);
 	ft_printf("pa\n");
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
 	int value;
-	value  = pop(a);
-	push(b, value);
+	value  = pop(*a);
+	push(*b, value);
 	ft_printf("pb\n");
 
 }

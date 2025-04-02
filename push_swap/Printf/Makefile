@@ -1,9 +1,7 @@
 
 CC = cc
 
-
 C = -Wall -Wextra -Werror
-
 
 NAME = libftprintf.a
 

@@ -48,52 +48,52 @@ int pop (t_stack *stack)
 
 // troca os dois primeiros elementos da pilha
 
-//void swap(t_stack *stack)
-//{
-//	if (!stack->top || !stack->top->next)
-//		return ;
-//	t_node *first = stack->top;
-//	t_node *second = first->next;
-//
-//	int temp = first->value;
-//	first->value = second->value;
-//	second->value = temp;
-//}
-//
-//void rotate(t_stack *stack)
-//{
-//	if (!stack->top || !stack->top->next)
-//		return;
-//
-//	t_node *first = stack->top;
-//	t_node *last = stack->top;
-//
-//	// nesse while que eu acho a ultima
-//	while (last->next != NULL)
-//		last = last->next;
-//
-//	stack->top = first->next;
-//	first->next = NULL;
-//	last->next = first;
-//}
-//
-//void reverse_rotate(t_stack *stack)
-//{
-//	if (!stack->top || !stack->top->next)
-//		return;
-//
-//	t_node *prev = NULL;
-//	t_node *first = stack->top;
-//	t_node *last = stack->top;
-//
-//	// nesse while que eu acho a ultima
-//	while (last->next != NULL)
-//	{
-//		prev = last;
-//		last = last->next;
-//	}
-//
-//	stack->top = last;
-//	prev->next = NULL;
-//	last->next = first;
-//}
+void swap(t_stack *stack)
+{
+	if (!stack->top || !stack->top->next)
+		return ;
+	t_node *first = stack->top;
+	t_node *second = first->next;
+
+	int temp = first->value;
+	first->value = second->value;
+	second->value = temp;
+}
+
+void rotate(t_stack *stack)
+{
+	if (!stack->top || !stack->top->next)
+			return;
+
+	t_node *first = stack->top;
+	t_node *last = stack->top;
+
+	// nesse while que eu acho a ultima
+		while (last->next != NULL)
+		last = last->next;
+
+	stack->top = first->next;
+	first->next = NULL;
+	last->next = first;
+}
+
+void reverse_rotate(t_stack *stack)
+{
+	if (!stack->top || !stack->top->next)
+		return;
+
+	t_node *prev = NULL;
+	t_node *first = stack->top;
+	t_node *last = stack->top;
+
+	// nesse while que eu acho a ultima
+	while (last->next != NULL)
+	{
+		prev = last;
+		last = last->next;
+	}
+
+	stack->top = last;
+	prev->next = NULL;
+	last->next = first;
+}

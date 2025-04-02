@@ -64,9 +64,9 @@ void distribute_by_bit(t_stack *a, t_stack *b, int bit_pos)
 		bit_value = (a->top->value >> bit_pos) & 1;
 
 		if (bit_value == 0)
-			pb(a, b);
+			pb(&a, &b);
 		else
-			rotate(a);
+			ra(&a);
 		size--;
 	}
 }
@@ -75,6 +75,6 @@ void distribute_by_bit(t_stack *a, t_stack *b, int bit_pos)
 void collect_numbers_back(t_stack *a, t_stack *b)
 {
 	while (b->size > 0)
-		pa(a, b);
+		pa(&a, &b);
 
 }

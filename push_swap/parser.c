@@ -62,7 +62,7 @@ void	parse_args2(int argc, char **args, t_stack *a)
 	while (i >= 0)
 	{
 		num = ft_atoi(args[i]);
-		if (!ft_isdigit((num)))
+		if (!is_number(args[i]))
 		{
 			error(args, argc, a);
 		}
