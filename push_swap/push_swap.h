@@ -23,6 +23,8 @@ typedef struct s_stack
 
 /* push_swap.c */
 void    push_swap(t_stack *a, t_stack *b);
+int is_organized(t_stack *a);
+
 
 /* parser.c */
 char    **parse_args1(int argc, char **argv);
@@ -39,6 +41,7 @@ void    print_stack(t_stack *stack); // (Debug)
 void    swap(t_stack *stack);
 void    rotate(t_stack *stack);
 void    reverse_rotate(t_stack *stack);
+void super_free(t_stack *stack);
 
 /* operations.c */
 void    sa(t_stack *a);
@@ -69,5 +72,6 @@ void collect_numbers_back(t_stack *a, t_stack *b);
 /*utils*/
 void    error(char **str, int argc, t_stack *a);
 int     is_number(char *str);
+
 
 #endif

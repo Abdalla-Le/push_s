@@ -10,6 +10,7 @@ Adicionar os numeros na pilha a
 // ./push_swap 1 2 3 4 ou ./push_swap "1 2 3 4"
 
 
+
 int is_duplicate(t_stack *a, int num)
 {
 	t_node *current;

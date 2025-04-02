@@ -3,14 +3,14 @@ NAME = push_swap
 
 # Compilador e flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Diretórios
 PRINTFDIR = Printf
 LIBFTDIR = $(PRINTFDIR)/libft  # Libft está dentro da printf
 
 # Arquivos fontes do push_swap
-SRCS = push_swap.c parser.c stack_utils.c indexing.c utils.c operations.c operations2.c radix_sort.c 
+SRCS = push_swap.c parser.c stack_utils.c indexing.c utils.c operations.c operations2.c radix_sort.c
 OBJS = $(SRCS:.c=.o)
 
 # Arquivo da printf (que já inclui a libft)

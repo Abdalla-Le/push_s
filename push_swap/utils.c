@@ -5,12 +5,12 @@ void error(char **str, int argc, t_stack *a)
 	int	i;
 
 	i = 0;
-	if (argc > 2)
+	if (argc == 2)
 	{
 		while(str[i])
 			free(str[i]);
 		i++;
-		free(str); //ver se tem q fazer isso msm
+		free(str);
 	}
 	else
 		free(str);

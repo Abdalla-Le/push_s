@@ -97,3 +97,17 @@ void reverse_rotate(t_stack *stack)
 	prev->next = NULL;
 	last->next = first;
 }
+
+void super_free(t_stack *stack)
+{
+	t_node *current;
+	t_node *next;
+	current = stack->top;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	free(stack);
+}
