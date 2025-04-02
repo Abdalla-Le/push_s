@@ -32,6 +32,8 @@ int main (int argc, char **argv)
     a = parse_args(argc, argv);
     if (is_organized(a))
         return(0);
+    index_stack(a);
+
     return(0);
 
 }

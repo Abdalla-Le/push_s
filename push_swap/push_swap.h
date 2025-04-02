@@ -10,8 +10,9 @@
 typedef struct s_node
 {
     int             value;
-    int             index; // Para facilitar o Radix Sort
+    int             index;
     struct s_node   *next;
+
 }   t_node;
 
 // Estrutura para representar as pilhas
@@ -19,6 +20,7 @@ typedef struct s_stack
 {
     t_node *top;
     int     size;
+    int     *arr;// Para facilitar o Radix Sort
 }   t_stack;
 
 /* push_swap.c */

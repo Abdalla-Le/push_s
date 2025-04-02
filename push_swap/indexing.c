@@ -2,8 +2,9 @@
 
 void sort_array(int *arr, int size)
 {
-	int i, j, temp;
-
+	int i;
+	int j;
+	int temp;
 	i = 0;
 	while(i < (size - 1))
 	{
@@ -22,7 +23,8 @@ void sort_array(int *arr, int size)
 
 int *copy_stack_to_array(t_stack *stack)
 {
-	int *arr = malloc(sizeof(int) * stack->size);
+	int *arr;
+	arr = malloc(sizeof(int) * stack->size);
 	if (!arr)
 		return NULL;
 
@@ -30,34 +32,36 @@ int *copy_stack_to_array(t_stack *stack)
 	int i = 0;
 	while (current)
 	{
-		arr[i++] = current->value;
+		arr[i] = current->value;
 		current = current->next;
+		i++;
 	}
-	return arr;
+	return (arr);
 }
 
 void index_stack(t_stack *stack)
 {
-	int *arr = copy_stack_to_array(stack);
+	int *arr;
+	int i;
+	arr = copy_stack_to_array(stack);
 	if (!arr)
 		return;
-
 	sort_array(arr, stack->size);
 
 	t_node *current = stack->top;
 	while (current)
 	{
-		int i = 0;
+		i = 0;
 		while (i < stack->size)
 		{
 			if (current->value == arr[i])
 			{
-				current->value = i;
+				current->index = i;
 				break;
 			}
 			i++;
 		}
 		current = current->next;
 	}
-	free(arr);
+	stack->arr = arr;
 }

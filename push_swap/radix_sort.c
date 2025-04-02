@@ -1,13 +1,5 @@
 #include "push_swap.h"
 
-/*
-As funcoes principais a serem implementadas no radix_sort.c sao:
-radix_sort(): A funcao principal que implementa o Radix Sort.
-count_digits(): Funcao para calcular o numero maximo de digitos entre os numeros.
-sort_by_digit(): Funcao para organizar os numeros com base em um digito especifico.
-get_digit(): Funcao para extrair um digito de um numero.
-*/
-
 void radix_sort(t_stack *a, t_stack *b)
 {
 	int max_bits;
@@ -19,13 +11,8 @@ void radix_sort(t_stack *a, t_stack *b)
 	bit_pos = 0;
 	while (bit_pos < max_bits)
 	{
-        // Passo 3: Distribuir os numeros nas pilhas 'a' e 'b' com base no bit corrente
         distribute_by_bit(a, b, bit_pos);
-
-        // Passo 4: Recolocar os números de volta na pilha 'a'
         collect_numbers_back(a, b);
-
-        // Avançar para o próximo bit
         bit_pos++;
     }
 
@@ -39,8 +26,8 @@ int find_max_bits(t_stack *a)
 
 	while (current)
 	{
-		if (current->value > max_value)
-			max_value = current->value;
+		if (current->index > max_value)
+			max_value = current->index;
 		current = current->next;
 	}
 
@@ -61,7 +48,7 @@ void distribute_by_bit(t_stack *a, t_stack *b, int bit_pos)
 
 	while (size > 0)
 	{
-		bit_value = (a->top->value >> bit_pos) & 1;
+		bit_value = (a->top->index >> bit_pos) & 1;
 
 		if (bit_value == 0)
 			pb(&a, &b);

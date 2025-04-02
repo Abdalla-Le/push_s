@@ -25,6 +25,7 @@ t_node *new_node(int value)
 
 void push(t_stack *stack, int value)
 {
+	// ao inez de usar a pop fazer uma mudança de endereço ente o a e o b 
 	t_node *node = new_node(value);
 	if (!node)
 		return;
@@ -36,12 +37,15 @@ void push(t_stack *stack, int value)
 
 int pop (t_stack *stack)
 {
+	int value;
+	t_node *current;
 	if (!stack->top)
 		return (-1);
-	t_node *temp = stack->top;
-	int value = temp->value;
-	stack->top = temp->next;
-	free(temp);
+
+	current = stack->top;
+	value = current->value;
+	stack->top = current->next;
+	free(current);
 	stack->size--;
 	return(value);
 }
