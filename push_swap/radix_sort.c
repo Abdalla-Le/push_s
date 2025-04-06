@@ -5,9 +5,7 @@ void radix_sort(t_stack *a, t_stack *b)
 	int max_bits;
 	int bit_pos;
 
-    // Passo 1: Encontrar o maior numero na pilha
 	max_bits = find_max_bits(a);
-    // Passo 2: Iterar sobre cada bit
 	bit_pos = 0;
 	while (bit_pos < max_bits)
 	{
@@ -21,20 +19,14 @@ void radix_sort(t_stack *a, t_stack *b)
 
 int find_max_bits(t_stack *a)
 {
-	int max_value = 0;
-	t_node *current = a->top;
+	int size;
 
-	while (current)
-	{
-		if (current->index > max_value)
-			max_value = current->index;
-		current = current->next;
-	}
-
+	size = a->size;
+	size -= 1;
 	int bits = 0;
-	while (max_value > 0)
+	while (size > 0)
 	{
-		max_value >>= 1;
+		size >>= 1;
 		bits++;
 	}
 	return bits;
@@ -45,16 +37,25 @@ void distribute_by_bit(t_stack *a, t_stack *b, int bit_pos)
 {
 	int size = a->size;
 	int bit_value;
+	int num;
+	int i;
 
+	i = 0;
 	while (size > 0)
 	{
-		bit_value = (a->top->index >> bit_pos) & 1;
-
-		if (bit_value == 0)
-			pb(&a, &b);
+		num = a->top->value;
+		if (a->arr[i] == num)
+		{
+			bit_value = (i >> bit_pos) & 1;
+			if (bit_value == 0)
+				pb(&a, &b);
+			else
+				ra(&a);
+			i = 0;
+			size--;
+		}
 		else
-			ra(&a);
-		size--;
+			i++;
 	}
 }
 

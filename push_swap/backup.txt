@@ -1,0 +1,23 @@
+	int	first;
+	int	second;
+	int	third;
+
+	first = a->top->value;
+	second = a->top->next->value;
+	third = a->top->next->next->value;
+	if(first < second && second > third && first < third)
+	{
+		sa(a);
+		ra(&a);
+	}
+	else if(first < second && second > third && first > third)
+		rra(&a);
+	else if(first > second && second < third && first < third)
+		sa(a);
+	else if(first > second && second > third && first > third)
+	{
+		sa(a);
+		rra(&a);
+	}
+	else if(first > second && second < third && third < first)
+		ra(&a);

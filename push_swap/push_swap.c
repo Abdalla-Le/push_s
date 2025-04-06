@@ -1,6 +1,3 @@
-#include "push_swap.h"
-
-
 
 #include "push_swap.h"
 #include <stdio.h>
@@ -26,6 +23,7 @@ int is_organized(t_stack *a)
 int main (int argc, char **argv)
 {
     t_stack *a;
+    t_stack *b;
 
     if (argc < 2)
         return(0);
@@ -33,6 +31,21 @@ int main (int argc, char **argv)
     if (is_organized(a))
         return(0);
     index_stack(a);
+    b = stack_init();
+    if (a->size > 5)
+        radix_sort(a,b);
+    else
+        mini_radix(a,b);
+
+    t_node *teste;
+    teste = a->top;
+    while (teste != NULL)
+    {
+    	ft_printf("%d\n", teste->value);
+    	teste = teste->next;
+    }
+
+
 
     return(0);
 

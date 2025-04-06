@@ -10,7 +10,7 @@
 typedef struct s_node
 {
     int             value;
-    int             index;
+//    int             index;
     struct s_node   *next;
 
 }   t_node;
@@ -66,7 +66,7 @@ void index_stack(t_stack *stack);
 
 
 /* radix_sort.c */
-void    radix_sort(t_stack *a, t_stack *b);
+void radix_sort(t_stack *a, t_stack *b);
 int find_max_bits(t_stack *a);
 void distribute_by_bit(t_stack *a, t_stack *b, int bit_pos);
 void collect_numbers_back(t_stack *a, t_stack *b);
@@ -75,5 +75,11 @@ void collect_numbers_back(t_stack *a, t_stack *b);
 void    error(char **str, int argc, t_stack *a);
 int     is_number(char *str);
 
+/* mini_radix.c */
+void mini_radix(t_stack *a, t_stack *b);
+void radix_3(t_stack *a);
+void radix_4(t_stack *a, t_stack *b);
+void radix_4_1(t_stack *a, t_stack *b);
+void radix_5 (t_stack *a, t_stack *b);
 
 #endif

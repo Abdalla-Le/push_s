@@ -17,7 +17,9 @@ void sort_array(int *arr, int size)
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;
 			}
+			j++;
 		}
+		i++;
 	}
 }
 
@@ -42,26 +44,9 @@ int *copy_stack_to_array(t_stack *stack)
 void index_stack(t_stack *stack)
 {
 	int *arr;
-	int i;
 	arr = copy_stack_to_array(stack);
 	if (!arr)
 		return;
 	sort_array(arr, stack->size);
-
-	t_node *current = stack->top;
-	while (current)
-	{
-		i = 0;
-		while (i < stack->size)
-		{
-			if (current->value == arr[i])
-			{
-				current->index = i;
-				break;
-			}
-			i++;
-		}
-		current = current->next;
-	}
 	stack->arr = arr;
 }

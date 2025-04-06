@@ -25,7 +25,7 @@ t_node *new_node(int value)
 
 void push(t_stack *stack, int value)
 {
-	// ao inez de usar a pop fazer uma mudança de endereço ente o a e o b 
+	// ao inez de usar a pop fazer uma mudança de endereço ente o a e o b
 	t_node *node = new_node(value);
 	if (!node)
 		return;
