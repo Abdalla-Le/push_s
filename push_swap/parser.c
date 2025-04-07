@@ -6,11 +6,27 @@
 /*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 08:51:23 by lnovis-a          #+#    #+#             */
-/*   Updated: 2025/04/07 08:53:59 by lnovis-a         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:52:41 by lnovis-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	which_free(char **args, t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	if (stack->flag == 1)
+	{
+		while (args[i])
+		{
+			free(args[i]);
+			i++;
+		}
+	}
+	free(args);
+}
 
 int	is_duplicate(t_stack *a, int num)
 {
@@ -26,7 +42,7 @@ int	is_duplicate(t_stack *a, int num)
 	return (0);
 }
 
-char	**parse_args1(int argc, char **argv)
+char	**parse_args1(int argc, char **argv, t_stack *a)
 {
 	int		i;
 	char	**args;
@@ -36,6 +52,7 @@ char	**parse_args1(int argc, char **argv)
 		args = ft_split(argv[1], ' ');
 		if (!args)
 			return (0);
+		a->flag = 1;
 	}
 	else
 	{
@@ -67,16 +84,18 @@ void	parse_args2(int argc, char **args, t_stack *a)
 		num = ft_atoi(args[i]);
 		if (!is_number(args[i]))
 		{
+			super_mini_free(a);
 			error(args, argc, a);
 		}
 		if (is_duplicate(a, num))
 		{
+			super_mini_free(a);
 			error(args, argc, a);
 		}
 		push(a, num);
 		i--;
 	}
-	free(args);
+	which_free(args, a);
 }
 
 t_stack	*parse_args(int argc, char **argv)
@@ -85,7 +104,7 @@ t_stack	*parse_args(int argc, char **argv)
 	char	**args;
 
 	a = stack_init();
-	args = parse_args1(argc, argv);
+	args = parse_args1(argc, argv, a);
 	parse_args2(argc, args, a);
 	return (a);
 }

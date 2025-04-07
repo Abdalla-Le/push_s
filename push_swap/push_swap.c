@@ -6,7 +6,7 @@
 /*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 08:57:17 by lnovis-a          #+#    #+#             */
-/*   Updated: 2025/04/07 08:59:16 by lnovis-a         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:53:03 by lnovis-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	is_organized(t_stack *a)
 		else
 			return (0);
 	}
-	super_free(a);
 	return (1);
 }
 
@@ -37,13 +36,19 @@ int	main(int argc, char **argv)
 		return (0);
 	a = parse_args(argc, argv);
 	if (is_organized(a))
+	{
+		super_mini_free(a);
+		free(a);
 		return (0);
+	}
 	index_stack(a);
 	b = stack_init();
 	if (a->size > 5)
 		radix_sort(a, b);
 	else
 		mini_radix(a, b);
+	super_free(a);
+	free(b);
 	return (0);
 }
 

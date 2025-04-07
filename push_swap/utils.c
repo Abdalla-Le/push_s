@@ -6,7 +6,7 @@
 /*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:03:28 by lnovis-a          #+#    #+#             */
-/*   Updated: 2025/04/07 09:04:42 by lnovis-a         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:26:04 by lnovis-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int	is_number(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
+		{
 			return (0);
+		}
 		i++;
 	}
 	return (1);

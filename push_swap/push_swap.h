@@ -6,7 +6,7 @@
 /*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 08:37:46 by lnovis-a          #+#    #+#             */
-/*   Updated: 2025/04/07 08:48:45 by lnovis-a         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:51:11 by lnovis-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_stack
 	t_node	*top;
 	int		size;
 	int		*arr;
+	int		flag;
 }	t_stack;
 
 /* push_swap.c */
@@ -35,7 +36,7 @@ void	push_swap(t_stack *a, t_stack *b);
 int		is_organized(t_stack *a);
 
 /* parser.c */
-char	**parse_args1(int argc, char **argv);
+char	**parse_args1(int argc, char **argv, t_stack *a);
 void	parse_args2(int argc, char **args, t_stack *a);
 int		is_duplicate(t_stack *a, int num);
 t_stack	*parse_args(int argc, char **argv);
@@ -45,11 +46,14 @@ t_stack	*stack_init(void);
 void	push(t_stack *stack, int value);
 int		pop(t_stack *stack);
 void	free_stack(t_stack *stack);
-void	print_stack(t_stack *stack); // (Debug)
+void	print_stack(t_stack *stack);
+
+/* stack_utils2.c */
 void	swap(t_stack *stack);
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
 void	super_free(t_stack *stack);
+void	super_mini_free(t_stack *stack);
 
 /* operations.c */
 void	sa(t_stack *a);

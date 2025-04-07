@@ -6,7 +6,7 @@
 /*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:15:49 by lnovis-a          #+#    #+#             */
-/*   Updated: 2025/04/07 09:18:05 by lnovis-a         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:52:15 by lnovis-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,21 @@ void	super_free(t_stack *stack)
 		free(current);
 		current = next;
 	}
+	free(current);
+	free(stack->arr);
 	free(stack);
+}
+
+void	super_mini_free(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*next;
+
+	current = stack->top;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }

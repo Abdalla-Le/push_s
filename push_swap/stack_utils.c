@@ -6,7 +6,7 @@
 /*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:10:00 by lnovis-a          #+#    #+#             */
-/*   Updated: 2025/04/07 09:16:34 by lnovis-a         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:42:05 by lnovis-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack	*stack_init(void)
 		return (NULL);
 	stack->top = NULL;
 	stack->size = 0;
+	stack->flag = 0;
 	return (stack);
 }
 
