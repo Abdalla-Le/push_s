@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indexing.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lnovis-a <lnovis-a@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/07 09:21:00 by lnovis-a          #+#    #+#             */
+/*   Updated: 2025/04/07 09:23:57 by lnovis-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sort_array(int *arr, int size)
+void	sort_array(int *arr, int size)
 {
-	int i;
-	int j;
-	int temp;
+	int	i;
+	int	j;
+	int	temp;
+
 	i = 0;
-	while(i < (size - 1))
+	while (i < (size - 1))
 	{
 		j = 0;
-		while(j < (size - 1))
+		while (j < (size - 1))
 		{
 			if (arr[j] > arr[j + 1])
 			{
@@ -23,15 +36,17 @@ void sort_array(int *arr, int size)
 	}
 }
 
-int *copy_stack_to_array(t_stack *stack)
+int	*copy_stack_to_array(t_stack *stack)
 {
-	int *arr;
+	int		*arr;
+	t_node	*current;
+	int		i;
+
 	arr = malloc(sizeof(int) * stack->size);
 	if (!arr)
-		return NULL;
-
-	t_node *current = stack->top;
-	int i = 0;
+		return (NULL);
+	current = stack->top;
+	i = 0;
 	while (current)
 	{
 		arr[i] = current->value;
@@ -41,12 +56,13 @@ int *copy_stack_to_array(t_stack *stack)
 	return (arr);
 }
 
-void index_stack(t_stack *stack)
+void	index_stack(t_stack *stack)
 {
-	int *arr;
+	int	*arr;
+
 	arr = copy_stack_to_array(stack);
 	if (!arr)
-		return;
+		return ;
 	sort_array(arr, stack->size);
 	stack->arr = arr;
 }

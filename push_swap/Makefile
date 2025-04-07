@@ -10,7 +10,7 @@ PRINTFDIR = Printf
 LIBFTDIR = $(PRINTFDIR)/libft  # Libft está dentro da printf
 
 # Arquivos fontes do push_swap
-SRCS = push_swap.c parser.c stack_utils.c indexing.c utils.c operations.c operations2.c radix_sort.c mini_radix.c
+SRCS = push_swap.c parser.c stack_utils.c stack_utils2.c indexing.c utils.c operations.c operations2.c radix_sort.c mini_radix.c
 OBJS = $(SRCS:.c=.o)
 
 # Arquivo da printf (que já inclui a libft)
