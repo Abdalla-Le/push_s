@@ -83,6 +83,8 @@ void	collect_numbers_back(t_stack *a, t_stack *b);
 /*utils*/
 void	error(char **str, int argc, t_stack *a);
 int		is_number(char *str);
+int    verify_split(char **args);
+long ft_atoil(const char *nptr);
 
 /* mini_radix.c */
 void	mini_radix(t_stack *a, t_stack *b);

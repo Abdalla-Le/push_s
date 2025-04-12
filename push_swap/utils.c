@@ -20,8 +20,10 @@ void	error(char **str, int argc, t_stack *a)
 	if (argc == 2)
 	{
 		while (str[i])
+		{
 			free(str[i]);
-		i++;
+			i++;
+		}
 		free(str);
 	}
 	else
@@ -47,4 +49,44 @@ int	is_number(char *str)
 		i++;
 	}
 	return (1);
+}
+
+int    verify_split(char **args)
+{
+    int    i;
+
+    i = 0;
+    while (args[i])
+    {
+        if (!args[i])
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+long ft_atoil(const char *nptr)
+{
+	int		sig;
+	int		i;
+	long	result;
+
+	i = 0;
+	sig = 1;
+	result = 0;
+	while (nptr[i] <= 32 && nptr[i])
+		if (nptr[i++] == '\e')
+			return (0);
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sig *= -1;
+		i++;
+	}
+	while (nptr[i] <= '9' && nptr[i] >= '0')
+	{
+		result = (result * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (result * sig);
 }

@@ -50,9 +50,10 @@ char	**parse_args1(int argc, char **argv, t_stack *a)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		if (!args)
-			return (0);
+		if (!args || verify_split(args))
+			error(args, argc ,a);
 		a->flag = 1;
+		
 	}
 	else
 	{
@@ -72,8 +73,8 @@ char	**parse_args1(int argc, char **argv, t_stack *a)
 
 void	parse_args2(int argc, char **args, t_stack *a)
 {
-	int	i;
-	int	num;
+	int		i;
+	long	num;
 
 	i = 0;
 	while (args[i])
@@ -81,19 +82,19 @@ void	parse_args2(int argc, char **args, t_stack *a)
 	i--;
 	while (i >= 0)
 	{
-		num = ft_atoi(args[i]);
-		if (!is_number(args[i]))
-		{
-			super_mini_free(a);
-			error(args, argc, a);
-		}
-		if (is_duplicate(a, num))
-		{
-			super_mini_free(a);
-			error(args, argc, a);
-		}
-		push(a, num);
-		i--;
+		num = ft_atoil(args[i]);
+        if (!is_number(args[i]) || num > 2147483647 || num < -2147483648)
+        {
+            super_mini_free(a);
+            error(args, argc, a);
+        }
+        if (is_duplicate(a, num))
+        {
+            super_mini_free(a);
+            error(args, argc, a);
+        }
+        push(a, (int)num);
+        i--;
 	}
 	which_free(args, a);
 }
