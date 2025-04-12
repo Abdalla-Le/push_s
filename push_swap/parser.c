@@ -50,10 +50,9 @@ char	**parse_args1(int argc, char **argv, t_stack *a)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		if (!args || verify_split(args))
+		if (!args || !args[0] || verify_split(args))
 			error(args, argc ,a);
 		a->flag = 1;
-		
 	}
 	else
 	{
